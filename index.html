@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LANGUAGE DETECTION AND TRANSLATION</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+ <div class="container mt-5">
+     <h1 class="text-center mb-4">LANGUAGE DETECTION AND TRANSLATION</h1>
+     <form action="/trans" method="post" class="mt-4">
+         <div class="form-group">
+             <label for="text">ENTER TEXT</label>
+             <textarea class="form-control" id="text" name="text" rows="3" ></textarea>
+         </div>
+
+         <div class="form-group">
+             <label for="target_lang">SELECT LANGUAGE</label>
+             <select class="form-control" id="target_lang" name="target_lang">
+                 {% for lang_code, lang_name in languages.items() %}
+                 <option value="{{ lang_code }}">{{ lang_name }}</option>
+                 {% endfor %}
+             </select>
+         </div>
+
+         <button type="submit" class="btn btn-primary">TRANSLATE</button>
+
+     </form>
+
+         <div class="result-section mt-4">
+             <h4>Detected Language: {{ detected_lang }}</h4>
+             <h4>Translated Language: {{ translation }}</h4>
+
+         </div>
+
+ </div>
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
